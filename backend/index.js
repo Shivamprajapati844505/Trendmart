@@ -6,7 +6,7 @@ const path = require("path");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 
-const port = process.env.PORT||4000;
+const port = 4000;
 app.use(express.json());
 app.use(cors());
 
@@ -40,7 +40,7 @@ app.use("/images", express.static("upload/images"));
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `https://trendmart-admin.onrender.com/images/${req.file.filename}`,
+    image_url: `https://trendmart-frontend.onrender.com/images/${req.file.filename}`,
   });
 });
 
