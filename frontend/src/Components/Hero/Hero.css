@@ -1,6 +1,6 @@
 .hero{
     height: 100vh;
-    background: linear-gradient(180deg, #aae5da,#e1ffea69 60%);
+    background: linear-gradient(-160deg, #aae5da,#e1ffea69 30%);
     display: flex;
     
 }
@@ -34,7 +34,7 @@
     width: 105px;
 }
 
-.hero-latest-btn{
+.hero-latest-btn button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,10 +42,11 @@
     width: 310px;
     height: 70px;
     border-radius: 75px;
+    border: none;
     margin-top: 30px;
     background: #ff4141;
     color: white;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 500;
 
 }
@@ -68,7 +69,7 @@
     .hero-hand-icon img{
         width: 80px;
     }
-    .hero-latest-btn{
+    .hero-latest-btn button{
         width: 250px;
         height: 60px;
         margin-top: 20px;
@@ -92,7 +93,7 @@
     .hero-hand-icon img{
         width: 60px;
     }
-    .hero-latest-btn{
+    .hero-latest-btn button{
         width: 220px;
         height: 50px;
         font-size: 15px;
@@ -115,7 +116,7 @@
     .hero-hand-icon img{
         width: 45px;
     }
-    .hero-latest-btn{
+    .hero-latest-btn button{
         width: 180px;
         height: 40px;
         font-size: 13px;
@@ -145,7 +146,7 @@
     .hero-hand-icon img{
         width: 50px;
     }
-    .hero-latest-btn{
+    .hero-latest-btn button{
         width: 200px;
         height: 45px;
         font-size: 14px;

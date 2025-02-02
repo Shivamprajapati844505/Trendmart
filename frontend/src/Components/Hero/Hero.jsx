@@ -2,7 +2,10 @@ import './Hero.css'
 import hand_icon from '../Assets/hand_icon.png'
 import arrow_icon from "../Assets/arrow.png";
 import hero_image from "../Assets/hero_image.png";
+import {useNavigate} from 'react-router-dom';
+
 function Hero() {
+  const navigate = useNavigate();
     return (  
         <div className="hero">
           <div className="hero-left">
@@ -16,8 +19,9 @@ function Hero() {
               <p>for everyone</p>
             </div>
             <div className="hero-latest-btn">
-                <div>Latest Collection</div>
-                <img src={arrow_icon} alt=""/>
+            <button onClick={() => navigate("/newcollections")}>
+        Latest Collection
+      </button>
             </div>
           </div>
           <div className="hero-right">

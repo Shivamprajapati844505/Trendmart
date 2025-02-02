@@ -7,7 +7,7 @@ import { useState } from 'react';
     const [productDetails , setProductDetails] = useState({
         name:"",
         image:"",
-        category:"women",
+        category:"kid",
         new_price:"",
         old_price:""
     })
