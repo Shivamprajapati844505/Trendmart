@@ -1,6 +1,8 @@
 import "./CSS/LoginSignup.css";
 import { useState } from "react";
 
+const URL = "https://trendmart-backend-l7x8.onrender.com";  // Define URL variable here
+
 function LoginSignup() {
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({
@@ -8,13 +10,15 @@ function LoginSignup() {
     password: "",
     email: "",
   });
+
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const login = async () => {
     console.log("Login Function Exceuted", formData);
     let responseData;
-    await fetch("http://localhost:4000/login", {
+    await fetch(`${URL}/login`, {  // Use the URL variable here
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -36,7 +40,7 @@ function LoginSignup() {
   const signup = async () => {
     console.log("Signup Function Exceuted", formData);
     let responseData;
-    await fetch("http://localhost:4000/signup", {
+    await fetch(`${URL}/signup`, {  // Use the URL variable here
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -107,7 +111,7 @@ function LoginSignup() {
           </p>
         ) : (
           <p className="loginsignup-login">
-            Create an new account?{" "}
+            Create a new account?{" "}
             <span
               onClick={() => {
                 setState("Sign Up");
@@ -120,7 +124,7 @@ function LoginSignup() {
 
         <div className="loginsignup-agree">
           <input type="checkbox" name="" id="" />
-          <p>By continuing, i agree to the terms of use & privacy policy.</p>
+          <p>By continuing, I agree to the terms of use & privacy policy.</p>
         </div>
       </div>
     </div>
