@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
 
 export const ShopContext = createContext(null);
 
@@ -18,18 +17,22 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
 
     useEffect(() => {
-        axios.get(`${URL}/allproducts`)
-            .then((response) => setAll_Product(response.data));
+        fetch(`${URL}/allproducts`)
+            .then((response) => response.json())
+            .then((data) => setAll_Product(data));
 
         if (localStorage.getItem('auth-token')) {
-            axios.post(`${URL}/getcart`, {}, {
+            fetch(`${URL}/getcart`, {
+                method: 'POST',
                 headers: {
                     Accept: 'application/json',
                     'auth-token': localStorage.getItem('auth-token'),
                     'Content-Type': 'application/json',
-                }
+                },
+                body: JSON.stringify({}),
             })
-            .then((response) => setCartItems(response.data));
+            .then((response) => response.json())
+            .then((data) => setCartItems(data));
         }
     }, []);
 
@@ -37,16 +40,15 @@ const ShopContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
 
         if (localStorage.getItem('auth-token')) {
-            axios.post(`${URL}/addtocart`, 
-                { itemId }, 
-                {
-                    headers: {
-                        Accept: 'application/json',
-                        'auth-token': localStorage.getItem('auth-token'),
-                        'Content-Type': 'application/json',
-                    }
-                }
-            );
+            fetch(`${URL}/addtocart`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'auth-token': localStorage.getItem('auth-token'),
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ itemId }),
+            });
         }
     };
 
@@ -54,16 +56,15 @@ const ShopContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
 
         if (localStorage.getItem('auth-token')) {
-            axios.post(`${URL}/removefromcart`, 
-                { itemId }, 
-                {
-                    headers: {
-                        Accept: 'application/json',
-                        'auth-token': localStorage.getItem('auth-token'),
-                        'Content-Type': 'application/json',
-                    }
-                }
-            );
+            fetch(`${URL}/removefromcart`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'auth-token': localStorage.getItem('auth-token'),
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ itemId }),
+            });
         }
     };
 
