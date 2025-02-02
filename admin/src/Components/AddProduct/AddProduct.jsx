@@ -2,7 +2,9 @@ import './AddProduct.css'
 import upload_area from '../../Assets/upload_area.svg'
 import { useState } from 'react';
 
- function AddProduct() {
+const URL = "https://trendmart-backend-l7x8.onrender.com";  // Define the base URL here
+
+function AddProduct() {
     const [image , setImage] = useState(false);
     const [productDetails , setProductDetails] = useState({
         name:"",
@@ -19,6 +21,7 @@ import { useState } from 'react';
     const changeHandler = (e) =>{
         setProductDetails({...productDetails, [e.target.name]:e.target.value})
     }
+
     const Add_Product = async(e) =>{
        console.log(productDetails);
         let responseData;
@@ -27,7 +30,7 @@ import { useState } from 'react';
         let formData = new FormData();
         formData.append('product', image);
 
-        await fetch('http://localhost:4000/upload', {
+        await fetch(`${URL}/upload`, {
             method: 'POST',
             headers:{
                 Accept:'application/json'
@@ -35,12 +38,11 @@ import { useState } from 'react';
             body: formData,
         }).then((resp) => resp.json()).then((data) => { responseData = data });
         
-
         if (responseData.success)
         {
            product.image = responseData.image_url;
            console.log(product);
-           await fetch('http://localhost:4000/addproduct',{
+           await fetch(`${URL}/addproduct`,{
             method:'POST',
             headers:{
                 Accept:'application/json',
@@ -48,11 +50,10 @@ import { useState } from 'react';
             },
               body:JSON.stringify(product),
            }).then((resp)=>resp.json()).then((data)=>{
-            data.success ? alert("Product Added"):alert("Failed")
+            data.success ? alert("Product Added") : alert("Failed")
            })
         }
     }
-
 
     return (  
         <div className="addproduct">
@@ -80,11 +81,11 @@ import { useState } from 'react';
            </div>
            <div className="addproduct-itemfield">
             <label htmlFor="file-input">
-                <img src={image?URL.createObjectURL(image):upload_area} className="addproduct-thumnail-img"/>
+                <img src={image ? URL.createObjectURL(image) : upload_area} className="addproduct-thumnail-img"/>
             </label>
             <input onChange={imageHandler} type ="file" name="image" id="file-input" hidden />
            </div>
-           <button onClick={()=>{Add_Product()}} className="addproduct-btn">ADD</button>
+           <button onClick={() => { Add_Product() }} className="addproduct-btn">ADD</button>
         </div>
     );
 }
