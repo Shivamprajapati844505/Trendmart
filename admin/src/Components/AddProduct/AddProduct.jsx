@@ -15,6 +15,7 @@ function AddProduct() {
     })
 
     const imageHandler = (e) =>{
+        console.log(e.target.files[0]); 
         setImage(e.target.files[0]);
     }
 
