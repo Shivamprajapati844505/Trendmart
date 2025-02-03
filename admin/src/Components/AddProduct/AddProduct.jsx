@@ -5,7 +5,7 @@ import { useState } from 'react';
 const URL = "https://trendmart-backend-l7x8.onrender.com";  // Define the base URL here
 
 function AddProduct() {
-    const [image , setImage] = useState(null);
+    const [image , setImage] = useState(false);
     const [productDetails , setProductDetails] = useState({
         name:"",
         image:"",
@@ -82,7 +82,7 @@ function AddProduct() {
            </div>
            <div className="addproduct-itemfield">
             <label htmlFor="file-input">
-                <img src={image ? URL.createObjectURL(image) : upload_area}  alt="Product Thumbnail" className="addproduct-thumnail-img"/>
+                <img src={image ? URL.createObjectURL(image) : upload_area} className="addproduct-thumnail-img"/>
             </label>
             <input onChange={imageHandler} type ="file" name="image" id="file-input" hidden />
            </div>
