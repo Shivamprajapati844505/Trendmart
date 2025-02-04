@@ -120,8 +120,16 @@ app.post("/removeproduct", async (req, res) => {
 // Get All Products API
 app.get("/allproducts", async (req, res) => {
   let products = await Product.find({});
-  res.send(products);
+
+  // Products ke har ek item ko update kar rahe hain
+  for (let product of products) {
+    product.image = product.image.replace("http://localhost:4000", "https://trendmart-backend-l7x8.onrender.com");
+    await product.save();  // Update and save each product
+  }
+
+  res.send(products);  // Ab yeh updated products ko return karega
 });
+
 
 //Schema creating for User model
 const Users = mongoose.model("Users", {
