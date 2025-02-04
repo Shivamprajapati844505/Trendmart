@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#41D1FF"/>
+      <stop offset="100%" stop-color="#BD34FE"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="none" stroke="url(#gradient)" stroke-width="2"/>
+  <g>
+    <text x="15" y="70" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="url(#gradient)">T</text>
+    <text x="48" y="80" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="url(#gradient)">D</text>
+  </g>
+</svg>
