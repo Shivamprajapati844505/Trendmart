@@ -120,16 +120,8 @@ app.post("/removeproduct", async (req, res) => {
 // Get All Products API
 app.get("/allproducts", async (req, res) => {
   let products = await Product.find({});
-
-  // Image URL ko replace kar raha hai
-  let updatedProducts = products.map(product => ({
-    ...product,
-    image: product.image.replace("http://localhost:4000", "https://trendmart-backend-l7x8.onrender.com")
-  }));
-
-  res.send(updatedProducts);
+  res.send(products);
 });
-
 
 //Schema creating for User model
 const Users = mongoose.model("Users", {
