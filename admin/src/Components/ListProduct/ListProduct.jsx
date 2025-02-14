@@ -2,7 +2,7 @@ import './ListProduct.css';
 import { useState, useEffect } from 'react';
 import cross_icon from '../../Assets/cross_icon.png';
 
-const URL = "https://trendmart-backend-l7x8.onrender.com";  // Define the base URL here
+const URL = "https://trendmart-backend-l7x8.onrender.com"; 
 
 function ListProduct() {
     const [allproducts, setAllProducts] = useState([]);
