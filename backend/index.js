@@ -6,6 +6,9 @@ const path = require("path");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 
+const Users = require("./models/User");
+const Product = require("./models/Product");
+
 const port = 4000;
 app.use(express.json());
 app.use(cors());
@@ -42,42 +45,6 @@ app.post("/upload", upload.single("product"), (req, res) => {
     success: 1,
     image_url: `https://trendmart-backend-l7x8.onrender.com/images/${req.file.filename}`,
   });
-});
-
-// Product Schema
-const Product = mongoose.model("Product", {
-  id: {
-    type: Number,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  new_price: {
-    type: Number,
-    required: true,
-  },
-  old_price: {
-    type: Number,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-  available: {
-    type: Boolean,
-    default: true,
-  },
 });
 
 // Add Product API
@@ -130,27 +97,6 @@ app.get("/allproducts", async (req, res) => {
   res.send(products);  // Ab yeh updated products ko return karega
 });
 
-
-//Schema creating for User model
-const Users = mongoose.model("Users", {
-  name: {
-    type: String,
-  },
-  email: {
-    type: String,
-    unique: true,
-  },
-  password: {
-    type: String,
-  },
-  cartData: {
-    type: Object,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-});
 
 // Creaing Register the user
 app.post("/signup", async (req, res) => {
