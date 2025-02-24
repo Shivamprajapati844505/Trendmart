@@ -27,7 +27,7 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Shivamprajapati844505/trendmart.git
+   git clone https://github.com/Shivamprajapati844505/Trendmart.git
    cd trendmart
    ```
 2. Install dependencies:
